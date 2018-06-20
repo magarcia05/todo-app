@@ -1,3 +1,7 @@
+/** 
+ * This is the starting node.js script for our todo-app
+ */
+
 // set up ======================================================================
 
 var express = require('express'),
