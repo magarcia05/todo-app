@@ -2,6 +2,30 @@
 
 /*****************************HEADER STYLES*****************************/
 
+/*****************************NAV STYLES********************************/
+
+.bg-nav-color {
+	background-color: #DB4C3F;
+}
+.navbar-dark .navbar-nav .oi-plus {
+	color: white;
+}
+
 /*****************************FORM STYLES*****************************/
+.form {
+	margin: 50px auto 20px;
+}
+
+
+#todoInput {
+	width: 100%;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #34495e;
+	outline: none;
+	font: 300 20px 'Ubuntu', sans-serif;
+	padding: 20px;
+	color: #34495e;
+}
 
 /*****************************LIST STYLES*****************************/

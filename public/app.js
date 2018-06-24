@@ -1,5 +1,11 @@
 /* global $ */
 $(document).ready(function() {
+  /***** Tooltips initialization *****/
+
+  $('[data-toggle="tooltip"]').tooltip()
+  
+  /*****CRUD Event listeners for Todolist *****/
+
   $.getJSON("/api/todos")
     .then(addTodos);
 
@@ -20,9 +26,10 @@ $(document).ready(function() {
     event.stopPropagation();
     removeTodo($(this).parent());
   });
+  
 });
-
-/*****************************CRUD functions for Todolist *****************************/
+ 
+/***************************** CRUD functions for Todolist *****************************/
 
 function addTodo(todo) {
   var newTodo = $('<li>'+todo.name +' <span>X</span></li>');
