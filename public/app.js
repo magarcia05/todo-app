@@ -3,40 +3,50 @@ $(document).ready(function() {
   /***** Tooltips initialization *****/
 
   $('[data-toggle="tooltip"]').tooltip()
-  
+
   /*****CRUD Event listeners for Todolist *****/
+  
+  $('#save-task').on('click',function(event){
+    createTodo($('#modal-task').val());
+  });
 
-  $.getJSON("/api/todos")
-    .then(addTodos);
-
+  // Create a Todo
   $('#todoInput').keypress(function(event) {
     if (event.which == 13) {
-      createTodo();
+      createTodo($('#todoInput').val());
     }
   });
 
-  //Workaround to select the spans inside the list-group class
-  $('.list-group').on('click', 'li', function(event){
+  // Read all Todos
+  $.getJSON("/api/todos")
+    .then(addTodos);
+
+  // Update a Todo completion
+  $('.list-group').on('click', 'li', function(event) {
+    //Workaround on top to select the li inside the list-group class
     updateTodo($(this));
   });
 
-  //Workaround to select the spans inside the list-group class
-  $('.list-group').on('click', 'span', function(event){
+  // Delete a Todo
+  $('.list-group').on('click', 'span', function(event) {
     //Event continue to trigger up, so it goes to .list-grou- -> li
     event.stopPropagation();
     removeTodo($(this).parent());
   });
-  
+
 });
- 
+
 /***************************** CRUD functions for Todolist *****************************/
 
 function addTodo(todo) {
-  var newTodo = $('<li>'+todo.name +' <span>X</span></li>');
+  var newTodo = $('<li><span class="oi oi-trash"></span> ' + todo.name + '</li>');
   newTodo.data('id', todo._id);
   newTodo.data('completed', todo.completed);
   newTodo.addClass('list-group-item');
 
+  if (todo.completed) {
+    newTodo.addClass("done");
+  }
   $('.list-group').append(newTodo);
 }
 
@@ -47,9 +57,8 @@ function addTodos(todos) {
   });
 }
 
-function createTodo() {
+function createTodo(usrInput) {
   //send request to create new todo
-  var usrInput = $('#todoInput').val();
   $.post('/api/todos', { name: usrInput })
     .then(function(newTodo) {
       //Remove the Todotask from the form
@@ -62,34 +71,33 @@ function createTodo() {
     });
 }
 
-function updateTodo(todo){
+function updateTodo(todo) {
   var updateUrl = '/api/todos/' + todo.data('id');
   var isDone = !todo.data('completed');
-  var updateData = {completed: isDone}
+  var updateData = { completed: isDone }
   $.ajax({
-    method: 'PUT',
-    url: updateUrl,
-    data: updateData
-  })
-  .then(function(updatedTodo){
-    console.log(updateData);
-    todo.toggleClass("done");
-    todo.data('completed', isDone);
-  });
+      method: 'PUT',
+      url: updateUrl,
+      data: updateData
+    })
+    .then(function(updatedTodo) {
+      todo.toggleClass("done");
+      todo.data('completed', isDone);
+    });
 }
 
-function removeTodo(todo){
-  var deleteUrl = '/api/todos/' + todo.data('id'); 
-  
+function removeTodo(todo) {
+  var deleteUrl = '/api/todos/' + todo.data('id');
+
   $.ajax({
-    method: 'DELETE',
-    url: deleteUrl
-  })
-  .then(function(data){
-    //$(this).parent().remove() to remove it from the screen
-    todo.remove();
-  })
-  .catch(function(err){
-    console.log(err);
-  });
+      method: 'DELETE',
+      url: deleteUrl
+    })
+    .then(function(data) {
+      //$(this).parent().remove() to remove it from the screen
+      todo.remove();
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 }

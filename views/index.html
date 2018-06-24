@@ -17,15 +17,37 @@
   <title>Todolist</title>
 </head>
 
-<body class="text-center">
+<body>
   <header>
     <nav class="navbar navbar-dark bg-nav-color pt-1 pb-1">
       <div class="container">
 
-        <a class="navbar-brand" href="#">Todolist</a>
+        <a class="navbar-brand" href="#">Todo<span id="nav-brand-span">List</span></a>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <span data-toggle="tooltip" data-placement="bottom" class="oi oi-plus" title="Quick add Task" aria-hidden="true"></span>
+            <span data-toggle="modal" data-target="#exampleModalLong" class="oi oi-plus" title="Quick add Task" aria-hidden="true"></span>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Quick Add Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" name="todoValue" id="modal-task" placeholder="e.g. Buy gift tomorrow at 6pm p1 #Errands">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save-task" data-dismiss="modal">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </li>
         </ul>
       </div>

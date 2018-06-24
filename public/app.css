@@ -4,14 +4,22 @@
 
 /*****************************NAV STYLES********************************/
 
+#nav-brand-span {
+	font-weight: 700;
+}
+
 .bg-nav-color {
 	background-color: #DB4C3F;
 }
+
 .navbar-dark .navbar-nav .oi-plus {
 	color: white;
 }
-
+#modal-task{
+	width: 100%;
+}
 /*****************************FORM STYLES*****************************/
+
 .form {
 	margin: 50px auto 20px;
 }
@@ -29,3 +37,21 @@
 }
 
 /*****************************LIST STYLES*****************************/
+
+li:nth-child(even) {
+	background-color: #f7f7f7;
+}
+/*padding: .75rem 1.25rem;*/
+/*span{*/
+/*	background: #DB4C3F;*/
+/*	height: 40px;*/
+/*	margin-right: 20px;*/
+/*	text-align: center;*/
+/*	color: red;*/
+/*	width: 0;*/
+/*	display: inline-block;*/
+/*}*/
+
+.done, .done:hover {
+	 text-decoration: line-through;
+}
