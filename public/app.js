@@ -1,7 +1,7 @@
 /* global $ */
 $(document).ready(function() {
   /***** Tooltips initialization *****/
-
+  
   $('[data-toggle="tooltip"]').tooltip()
 
   /*****CRUD Event listeners for Todolist *****/

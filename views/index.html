@@ -25,7 +25,9 @@
         
         <ul class="navbar-nav">
           <li class="nav-item">
-            <span data-toggle="modal" data-target="#addTodoModal" class="oi oi-plus" title="Quick add Task" aria-hidden="true"></span>
+            <span data-toggle="modal" data-target="#addTodoModal" title="Quick Add Task" aria-hidden="true">
+               <span data-toggle="tooltip" data-placement="bottom" title="Quick Add Task" class="oi oi-plus"></span>
+            </span>
 
             <!-- Modal -->
             <div class="modal fade" id="addTodoModal" tabindex="-1" role="dialog" aria-labelledby="todoModalLongTitle" aria-hidden="true">
@@ -47,22 +49,24 @@
                 </div>
               </div>
             </div>
-
+            
           </li>
         </ul>
       </div>
-
     </nav>
   </header>
 
+
   <main role="main">
     <div class="container">
+      
       <section class="form">
         <input type="text" name="todoValue" id="todoInput" placeholder="Insert your task here...">
       </section>
 
       <div class="list-group">
       </div>
+      
     </div>
   </main>
 
